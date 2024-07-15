@@ -48,7 +48,7 @@ return image
 
 Read the image
 
-image = cv2. imread('path/to/your/image. jpg')
+image = cv2. imread(parking.jpg)
 
 Detect parking spaces
 
