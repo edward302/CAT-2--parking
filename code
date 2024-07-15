@@ -1,0 +1,63 @@
+import cv2
+
+import numpy as np
+
+def detect_parking(image):
+
+Convert to grayscale
+
+gray = cv2. cvtColor(image, cv2. COLOR_BGR2GRAY)
+
+Background subtraction (change kernel size if necessary)
+
+kernel = np. ones((5, 5), np. uint8)
+
+opening = cv2. morphologyEx(gray, cv2. MORPH_OPEN, kernel)
+
+background = cv2. morphologyEx(opening, cv2. MORPH_CLOSE, kernel)
+
+foreground = cv2. absdiff(gray, background)
+
+Thresholding
+
+ret, thresh = cv2. threshold(foreground, 127, 255,cv2. THRESH_BINARY)
+
+Find contours
+
+contours, = cv2. findContours(thresh, cv2. RETREXTERNAL, cv2. CHAIN_APPROX_SIMPLE)
+
+Specify the minimum and maximum area of a parking place
+
+min_area = 1000
+
+max_area = 10000
+
+Process 1: Iterate through contours and detect parking slots
+
+for cnt in contours:
+
+area = cv2.contourArea(cnt)
+
+if min_area < area and (area > max(minima) or any(area_density_difference[area]>=0 for _ in range(len(max_aspects))):
+
+x, y, w, h = cv2. boundingRect(cnt)
+
+cv2. cv2.rectangle(image, (x,y), (x+w,y+h), 0,255,(00)
+
+return image
+
+Read the image
+
+image = cv2. imread('path/to/your/image. jpg')
+
+Detect parking spaces
+
+processed_image = detect_parking (image copy())
+
+Display the result
+
+cv2. imshow("Parking Occupancy Detection", processed_image)
+
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
